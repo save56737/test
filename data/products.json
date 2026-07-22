@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "name": "Pearl Drop Necklace",
+    "price": 89.99,
+    "category": "necklaces",
+    "image": "https://images.unsplash.com/photo-1599643478518-17488fbbcd7e?w=500&h=500&fit=crop",
+    "description": "Elegant freshwater pearl necklace with gold chain",
+    "inStock": true
+  },
+  {
+    "id": "2",
+    "name": "Crystal Pendant",
+    "price": 75,
+    "category": "necklaces",
+    "image": "https://images.unsplash.com/photo-1602751584552-8ba43d5c38f4?w=500&h=500&fit=crop",
+    "description": "Handcrafted crystal pendant on silver chain",
+    "inStock": true
+  },
+  {
+    "id": "3",
+    "name": "Gold Hoop Earrings",
+    "price": 65,
+    "category": "earrings",
+    "image": "https://images.unsplash.com/photo-1630019852942-f89202989a51?w=500&h=500&fit=crop",
+    "description": "Classic gold-plated hoop earrings",
+    "inStock": true
+  },
+  {
+    "id": "4",
+    "name": "Turquoise Studs",
+    "price": 45,
+    "category": "earrings",
+    "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=500&fit=crop",
+    "description": "Natural turquoise stone stud earrings",
+    "inStock": true
+  },
+  {
+    "id": "5",
+    "name": "Beaded Bracelet",
+    "price": 55,
+    "category": "bracelets",
+    "image": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop",
+    "description": "Multi-colored beaded bracelet with charm",
+    "inStock": true
+  },
+  {
+    "id": "6",
+    "name": "Silver Cuff",
+    "price": 95,
+    "category": "bracelets",
+    "image": "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=500&h=500&fit=crop",
+    "description": "Minimalist silver cuff bracelet",
+    "inStock": true
+  },
+  {
+    "id": "7",
+    "name": "Rose Gold Ring",
+    "price": 120,
+    "category": "rings",
+    "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop",
+    "description": "Delicate rose gold band with small gem",
+    "inStock": true
+  },
+  {
+    "id": "8",
+    "name": "Amethyst Ring",
+    "price": 135,
+    "category": "rings",
+    "image": "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=500&h=500&fit=crop",
+    "description": "Sterling silver ring with amethyst stone",
+    "inStock": true
+  },
+  {
+    "id": "9",
+    "name": "Layered Chain Necklace",
+    "price": 98,
+    "category": "necklaces",
+    "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=500&fit=crop",
+    "description": "Trendy layered gold chain necklace",
+    "inStock": true
+  },
+  {
+    "id": "10",
+    "name": "Feather Earrings",
+    "price": 52,
+    "category": "earrings",
+    "image": "https://images.unsplash.com/photo-1617038224558-28ad3fb558a7?w=500&h=500&fit=crop",
+    "description": "Bohemian style feather drop earrings",
+    "inStock": true
+  },
+  {
+    "id": "11",
+    "name": "Leather Wrap Bracelet",
+    "price": 68,
+    "category": "bracelets",
+    "image": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop",
+    "description": "Genuine leather wrap bracelet with beads",
+    "inStock": true
+  },
+  {
+    "id": "12",
+    "name": "Vintage Signet Ring",
+    "price": 145,
+    "category": "rings",
+    "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop",
+    "description": "Classic vintage-style signet ring",
+    "inStock": true
+  }
+]

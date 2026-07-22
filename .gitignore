@@ -1,42 +1,53 @@
 ```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.class
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
 # Dependencies
 node_modules/
-venv/
-.venv/
+
+# Environment variables
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
+
+# IDE files
+.vscode/
+.idea/
 *.swp
 *.swo
 
-# Editors
-.vscode/
-.idea/
+# Build artifacts
+dist/
+build/
+target/
 
-# System files
-.DS_Store
-Thumbs.db
+# Python cache (if any Python files exist in backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# Coverage
+# Coverage reports
 coverage/
 htmlcov/
 .coverage
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Package lock files (already in repo but good to have)
+package-lock.json
+yarn.lock
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
 
 # Compressed files
 *.zip
@@ -48,17 +59,4 @@ htmlcov/
 *.7z
 *.rar
 *.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
 ```

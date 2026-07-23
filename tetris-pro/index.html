@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Pro - Ultimate Tetris Experience</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen active">
+            <h1 class="game-title">TETRIS<span class="highlight">PRO</span></h1>
+            <div class="menu-options">
+                <button class="menu-btn" data-screen="game-mode">Play</button>
+                <button class="menu-btn" data-screen="multiplayer">Multiplayer</button>
+                <button class="menu-btn" data-screen="tetris-lab">Tetris Lab</button>
+                <button class="menu-btn" data-screen="practice">Practice</button>
+                <button class="menu-btn" data-screen="profile">Profile</button>
+                <button class="menu-btn" data-screen="leaderboard">Leaderboard</button>
+                <button class="menu-btn" data-screen="settings">Settings</button>
+                <button class="menu-btn" data-screen="customization">Customization</button>
+            </div>
+        </div>
+
+        <!-- Game Mode Selection -->
+        <div id="game-mode" class="screen">
+            <h2>Select Game Mode</h2>
+            <div class="mode-grid">
+                <button class="mode-btn" data-mode="classic">Classic</button>
+                <button class="mode-btn" data-mode="sprint">Sprint (40 Lines)</button>
+                <button class="mode-btn" data-mode="ultra">Ultra (3 Min)</button>
+                <button class="mode-btn" data-mode="marathon">Marathon (Lv 30)</button>
+                <button class="mode-btn" data-mode="endless">Endless</button>
+                <button class="mode-btn" data-mode="survival">Survival</button>
+                <button class="mode-btn" data-mode="zen">Zen</button>
+                <button class="mode-btn" data-mode="daily">Daily Challenge</button>
+                <button class="mode-btn" data-mode="boss">Boss Mode</button>
+                <button class="mode-btn" data-screen="main-menu">Back</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-container">
+                <div class="side-panel left">
+                    <div class="panel-section">
+                        <h3>Hold</h3>
+                        <canvas id="hold-canvas" width="100" height="100"></canvas>
+                    </div>
+                    <div class="panel-section">
+                        <h3>Next</h3>
+                        <canvas id="next-canvas" width="100" height="300"></canvas>
+                    </div>
+                </div>
+                
+                <div class="game-board">
+                    <canvas id="game-canvas" width="300" height="600"></canvas>
+                    <div id="pause-overlay" class="overlay hidden">
+                        <h2>PAUSED</h2>
+                        <button class="menu-btn" id="resume-btn">Resume</button>
+                        <button class="menu-btn" id="quit-btn">Quit</button>
+                    </div>
+                </div>
+                
+                <div class="side-panel right">
+                    <div class="panel-section">
+                        <h3>Score</h3>
+                        <div id="score" class="stat-value">0</div>
+                    </div>
+                    <div class="panel-section">
+                        <h3>Level</h3>
+                        <div id="level" class="stat-value">1</div>
+                    </div>
+                    <div class="panel-section">
+                        <h3>Lines</h3>
+                        <div id="lines" class="stat-value">0</div>
+                    </div>
+                    <div class="panel-section">
+                        <h3>Combo</h3>
+                        <div id="combo" class="stat-value">0</div>
+                    </div>
+                    <div class="panel-section">
+                        <h3>Grade</h3>
+                        <div id="grade" class="stat-value grade">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over" class="screen">
+            <h2>GAME OVER</h2>
+            <div class="stats-summary">
+                <div class="stat-row">
+                    <span>Final Score:</span>
+                    <span id="final-score">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Lines:</span>
+                    <span id="final-lines">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Level:</span>
+                    <span id="final-level">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Grade:</span>
+                    <span id="final-grade" class="grade">C</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="stats-chart"></canvas>
+            </div>
+            <div class="menu-options">
+                <button class="menu-btn" id="retry-btn">Play Again</button>
+                <button class="menu-btn" data-screen="main-menu">Main Menu</button>
+            </div>
+        </div>
+
+        <!-- Tetris Lab Screen -->
+        <div id="tetris-lab" class="screen">
+            <h2>Tetris Lab - AI Analysis</h2>
+            <div class="lab-content">
+                <div class="analysis-section">
+                    <h3>Decision Quality</h3>
+                    <div id="accuracy-score">Accuracy: --%</div>
+                    <canvas id="accuracy-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="analysis-section">
+                    <h3>Missed Opportunities</h3>
+                    <div id="missed-opportunities">No games analyzed yet</div>
+                </div>
+                <div class="analysis-section">
+                    <h3>Weakness Detection</h3>
+                    <div id="weakness-detection">Play games to get personalized recommendations</div>
+                </div>
+                <div class="analysis-section">
+                    <h3>Pro Comparison</h3>
+                    <button class="menu-btn" id="compare-pro-btn">Compare with Pro Replay</button>
+                </div>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings" class="screen">
+            <h2>Settings</h2>
+            <div class="settings-grid">
+                <div class="setting-row">
+                    <label>DAS (Delay Auto Shift):</label>
+                    <input type="range" id="das-setting" min="50" max="500" value="170">
+                    <span id="das-value">170ms</span>
+                </div>
+                <div class="setting-row">
+                    <label>ARR (Auto Repeat Rate):</label>
+                    <input type="range" id="arr-setting" min="10" max="100" value="30">
+                    <span id="arr-value">30ms</span>
+                </div>
+                <div class="setting-row">
+                    <label>Soft Drop Speed:</label>
+                    <input type="range" id="softdrop-setting" min="1" max="20" value="1">
+                    <span id="softdrop-value">1x</span>
+                </div>
+                <div class="setting-row">
+                    <label>Lock Delay:</label>
+                    <input type="range" id="lockdelay-setting" min="300" max="1000" value="500">
+                    <span id="lockdelay-value">500ms</span>
+                </div>
+                <div class="setting-row">
+                    <label>Rotation System:</label>
+                    <select id="rotation-setting">
+                        <option value="srs">SRS (Super Rotation System)</option>
+                        <option value="ars">ARS (Advanced Rotation System)</option>
+                    </select>
+                </div>
+                <div class="setting-row">
+                    <label>Color Blind Mode:</label>
+                    <input type="checkbox" id="colorblind-setting">
+                </div>
+                <div class="setting-row">
+                    <label>High Contrast:</label>
+                    <input type="checkbox" id="highcontrast-setting">
+                </div>
+                <div class="setting-row">
+                    <label>Screen Shake:</label>
+                    <input type="checkbox" id="screenshake-setting" checked>
+                </div>
+                <div class="setting-row">
+                    <label>Particles:</label>
+                    <input type="checkbox" id="particles-setting" checked>
+                </div>
+                <div class="setting-row">
+                    <label>Music Volume:</label>
+                    <input type="range" id="music-volume" min="0" max="100" value="70">
+                    <span id="music-volume-value">70%</span>
+                </div>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+
+        <!-- Profile Screen -->
+        <div id="profile" class="screen">
+            <h2>Player Profile</h2>
+            <div class="profile-header">
+                <div class="avatar" id="player-avatar">🎮</div>
+                <div class="player-info">
+                    <h3 id="player-name">Player 1</h3>
+                    <div class="rank" id="player-rank">Unranked</div>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-box">
+                    <div class="stat-label">Games Played</div>
+                    <div class="stat-number" id="games-played">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Best Score</div>
+                    <div class="stat-number" id="best-score">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Total Lines</div>
+                    <div class="stat-number" id="total-lines">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Best Grade</div>
+                    <div class="stat-number grade" id="best-grade">-</div>
+                </div>
+            </div>
+            <div class="heatmap-container">
+                <h3>Placement Heatmap</h3>
+                <canvas id="heatmap-canvas" width="300" height="600"></canvas>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard" class="screen">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="global">Global</button>
+                <button class="tab-btn" data-tab="country">Country</button>
+                <button class="tab-btn" data-tab="friends">Friends</button>
+                <button class="tab-btn" data-tab="weekly">Weekly</button>
+            </div>
+            <div class="leaderboard-content">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Score</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <tr><td>1</td><td>ProPlayer</td><td>999,999</td><td class="grade">SSS+</td></tr>
+                        <tr><td>2</td><td>TetrisMaster</td><td>950,000</td><td class="grade">SSS</td></tr>
+                        <tr><td>3</td><td>LineClearer</td><td>900,000</td><td class="grade">SS+</td></tr>
+                        <tr><td>4</td><td>ComboKing</td><td>850,000</td><td class="grade">SS</td></tr>
+                        <tr><td>5</td><td>SpinDoctor</td><td>800,000</td><td class="grade">S+</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+
+        <!-- Customization Screen -->
+        <div id="customization" class="screen">
+            <h2>Customization</h2>
+            <div class="custom-tabs">
+                <button class="tab-btn active" data-custom="themes">Themes</button>
+                <button class="tab-btn" data-custom="skins">Piece Skins</button>
+                <button class="tab-btn" data-custom="backgrounds">Backgrounds</button>
+                <button class="tab-btn" data-custom="effects">Effects</button>
+            </div>
+            <div class="custom-content">
+                <div class="custom-option" data-type="theme" data-value="neon">
+                    <div class="preview neon-preview"></div>
+                    <span>Neon Cyberpunk</span>
+                </div>
+                <div class="custom-option" data-type="theme" data-value="classic">
+                    <div class="preview classic-preview"></div>
+                    <span>Classic</span>
+                </div>
+                <div class="custom-option" data-type="theme" data-value="minimal">
+                    <div class="preview minimal-preview"></div>
+                    <span>Minimal</span>
+                </div>
+                <div class="custom-option" data-type="theme" data-value="nature">
+                    <div class="preview nature-preview"></div>
+                    <span>Nature</span>
+                </div>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+
+        <!-- Practice Screen -->
+        <div id="practice" class="screen">
+            <h2>Practice Mode</h2>
+            <div class="practice-options">
+                <button class="menu-btn" data-practice="tspin">T-Spin Training</button>
+                <button class="menu-btn" data-practice="combo">Combo Training</button>
+                <button class="menu-btn" data-practice="perfectclear">Perfect Clear Training</button>
+                <button class="menu-btn" data-practice="downstack">Downstack Training</button>
+                <button class="menu-btn" data-practice="speed">Speed Training</button>
+            </div>
+            <button class="menu-btn back-btn" data-screen="main-menu">Back to Menu</button>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

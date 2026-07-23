@@ -2,61 +2,43 @@
 # Dependencies
 node_modules/
 
-# Environment variables
+# Build outputs
+dist/
+build/
+coverage/
+htmlcov/
+
+# Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Logs
 *.log
 
-# IDE files
-.vscode/
-.idea/
+# Temporary files
+*.tmp
 *.swp
 *.swo
 
-# Build artifacts
-dist/
-build/
-target/
-
-# Python cache (if any Python files exist in backend)
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Coverage reports
-coverage/
-htmlcov/
+.Python
+*.so
 .coverage
 
-# Temporary files
-*.tmp
-*.temp
+# IDE
+.vscode/
+.idea/
 
-# OS specific
+# OS
 .DS_Store
 Thumbs.db
 
-# Package lock files (already in repo but good to have)
-package-lock.json
-yarn.lock
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
+# Testing
+.mypy_cache/
+.pytest_cache/
 ```
